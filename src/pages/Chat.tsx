@@ -659,7 +659,7 @@ const Chat = () => {
       </AlertDialog>
 
       <Dialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
-        <DialogContent className="sm:max-w-md max-w-[90vw] mx-4">
+        <DialogContent className="p-4 sm:p-6 max-w-[95vw] sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>Chat Settings</DialogTitle>
           </DialogHeader>
@@ -693,13 +693,13 @@ const Chat = () => {
               </div>
             </div>
           </div>
-          <DialogFooter className="sm:justify-between">
-            <Button type="button" variant="secondary" onClick={handleExportChat}>
+          <DialogFooter className="flex-col gap-2 sm:flex-row sm:justify-between">
+            <Button type="button" variant="secondary" onClick={handleExportChat} className="w-full sm:w-auto">
               Export Chat
             </Button>
-            <div className="flex gap-2">
-              <Button variant="outline" onClick={() => setIsSettingsOpen(false)}>Cancel</Button>
-              <Button onClick={handleSaveSettings}>Save Changes</Button>
+            <div className="flex gap-2 w-full sm:w-auto">
+              <Button variant="outline" onClick={() => setIsSettingsOpen(false)} className="flex-1 sm:flex-none">Cancel</Button>
+              <Button onClick={handleSaveSettings} className="flex-1 sm:flex-none">Save Changes</Button>
             </div>
           </DialogFooter>
         </DialogContent>

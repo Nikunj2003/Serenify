@@ -128,7 +128,7 @@ const JournalNew = () => {
         </Button>
 
         <Card className="border-primary/20 shadow-lg">
-          <CardHeader>
+          <CardHeader className="px-4 sm:px-6">
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-primary" />
               <CardTitle>New Journal Entry</CardTitle>
@@ -142,7 +142,7 @@ const JournalNew = () => {
               })}
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6 p-4 sm:p-6">
+          <CardContent className="space-y-6 px-4 sm:px-6">
             {/* Mood Selection */}
             <div className="space-y-3">
               <Label>How are you feeling right now?</Label>
@@ -274,7 +274,7 @@ const JournalNew = () => {
             {/* Journal Content */}
             <div className="space-y-3">
               <Label htmlFor="journal-content">Your thoughts</Label>
-              <div className="bg-card rounded-md">
+              <div className="bg-card rounded-md overflow-hidden border border-border">
                 <ReactQuill
                   theme="snow"
                   value={content}

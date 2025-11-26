@@ -346,3 +346,27 @@ All colors MUST be HSL.
     transform: translateY(0);
   }
 }
+
+/* ReactQuill Editor Mobile Padding Fix */
+.ql-container.ql-snow {
+  border: 1px solid hsl(var(--border));
+  border-top: 0;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid hsl(var(--border));
+  border-bottom: 0;
+  @apply rounded-t-md;
+}
+
+/* Force padding on the editor content area */
+.ql-container .ql-editor {
+  padding: 12px 16px !important;
+  min-height: 300px;
+}
+
+/* Ensure placeholder also has proper padding */
+.ql-editor.ql-blank::before {
+  left: 16px !important;
+  right: 16px !important;
+}
