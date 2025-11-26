@@ -659,7 +659,7 @@ const Chat = () => {
       </AlertDialog>
 
       <Dialog open={isSettingsOpen} onOpenChange={setIsSettingsOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md max-w-[90vw] mx-4">
           <DialogHeader>
             <DialogTitle>Chat Settings</DialogTitle>
           </DialogHeader>

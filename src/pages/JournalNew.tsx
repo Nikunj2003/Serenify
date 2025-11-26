@@ -117,7 +117,7 @@ const JournalNew = () => {
 
   return (
     <Layout>
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 sm:px-6 py-8 max-w-3xl">
         <Button
           variant="ghost"
           onClick={() => navigate("/journal")}
@@ -142,7 +142,7 @@ const JournalNew = () => {
               })}
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-6 p-4 sm:p-6">
             {/* Mood Selection */}
             <div className="space-y-3">
               <Label>How are you feeling right now?</Label>
