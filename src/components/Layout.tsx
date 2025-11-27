@@ -17,9 +17,10 @@ import { motion, AnimatePresence } from "framer-motion";
 interface LayoutProps {
   children: ReactNode;
   hideMobileHeader?: boolean;
+  disablePadding?: boolean;
 }
 
-const Layout = ({ children, hideMobileHeader = false }: LayoutProps) => {
+const Layout = ({ children, hideMobileHeader = false, disablePadding = false }: LayoutProps) => {
   const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
   const currentPath = location.pathname;
@@ -124,7 +125,10 @@ const Layout = ({ children, hideMobileHeader = false }: LayoutProps) => {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 pb-24 md:pb-8 relative z-10">
+      <main className={cn(
+        "flex-1 relative z-10",
+        disablePadding ? "pb-0 md:pb-8" : "pb-24 md:pb-8"
+      )}>
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

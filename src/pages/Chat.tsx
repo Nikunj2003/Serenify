@@ -367,8 +367,8 @@ const Chat = () => {
   };
 
   return (
-    <Layout hideMobileHeader={true}>
-      <div className="container mx-auto px-4 py-6 max-w-6xl h-[calc(100dvh-120px)] md:h-[calc(100vh-100px)] flex gap-6">
+    <Layout hideMobileHeader={true} disablePadding={true}>
+      <div className="container mx-auto px-3 py-4 md:px-4 md:py-6 max-w-6xl h-[calc(100dvh-60px)] md:h-[calc(100vh-100px)] flex gap-6">
         {/* Sidebar for Desktop */}
         <div className="hidden md:block w-64 shrink-0 border-r pr-6">
           <SidebarContent
@@ -459,11 +459,11 @@ const Chat = () => {
                 </div>
               </div>
             ) : messages.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center space-y-8 p-8">
+              <div className="h-full flex flex-col items-center justify-center text-center space-y-6 md:space-y-8 p-4 md:p-8 mt-12 md:mt-0">
                 <div className="text-6xl mb-4 animate-float">💬</div>
                 <div>
-                  <h2 className="text-3xl font-bold mb-3 text-balance">Start a conversation</h2>
-                  <p className="text-muted-foreground text-lg mb-8 max-w-md">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-3 text-balance">Start a conversation</h2>
+                  <p className="text-muted-foreground text-base md:text-lg mb-6 md:mb-8 max-w-md">
                     Share what's on your mind. I'm here to listen without judgment.
                   </p>
                 </div>
@@ -473,7 +473,7 @@ const Chat = () => {
                       key={i}
                       variant="outline"
                       onClick={() => handleSend(prompt)}
-                      className="text-left justify-start h-auto py-4 px-5 hover:bg-primary/5 hover:border-primary/30 hover:text-primary transition-all group"
+                      className="text-left justify-start h-auto py-3 px-4 md:py-4 md:px-5 hover:bg-primary/5 hover:border-primary/30 hover:text-primary transition-all group"
                     >
                       <MarkdownMessage content={prompt} className="group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -532,27 +532,27 @@ const Chat = () => {
             )}
           </div>
 
-          <div className="bg-gradient-to-br from-card to-muted/30 border rounded-2xl p-4 shadow-lg shrink-0">
+          <div className="bg-gradient-to-br from-card to-muted/30 border rounded-2xl p-3 md:p-4 shadow-lg shrink-0">
             <div className="flex gap-3">
               <Textarea
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Share what's on your mind..."
-                className="min-h-[60px] max-h-[120px] resize-none border-muted-foreground/20 focus:border-primary/50 bg-background/50 backdrop-blur-sm"
+                className="min-h-[50px] md:min-h-[60px] max-h-[120px] resize-none border-muted-foreground/20 focus:border-primary/50 bg-background/50 backdrop-blur-sm"
                 maxLength={500}
               />
               <Button
                 onClick={() => handleSend()}
                 disabled={!input.trim() || isTyping || !currentSessionId}
                 size="icon"
-                className="h-[60px] w-[60px] shrink-0 shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="h-[50px] w-[50px] md:h-[60px] md:w-[60px] shrink-0 shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
               </Button>
             </div>
             <div className="flex items-center justify-between mt-2">
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground hidden sm:block">
                 Press Enter to send • Shift+Enter for new line
               </p>
               <div className="flex items-center gap-2">
