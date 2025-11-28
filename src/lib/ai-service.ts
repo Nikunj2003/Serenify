@@ -28,7 +28,7 @@ export const generateEmbedding = async (text: string): Promise<number[] | null> 
 export const generateAIResponse = async (prompt: string): Promise<string> => {
     if (!API_KEY) return "AI service unavailable.";
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         const result = await model.generateContent(prompt);
         const response = await result.response;
         return response.text();
