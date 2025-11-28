@@ -11,6 +11,7 @@ import { generateAIResponse } from "@/lib/ai-service";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { toast } from "sonner";
+import MarkdownMessage from "@/components/MarkdownMessage";
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
@@ -227,7 +228,7 @@ const MoodInsights = () => {
                                 </div>
                             ) : (
                                 <div className="prose dark:prose-invert max-w-none">
-                                    <p className="whitespace-pre-line">{aiInsights}</p>
+                                    <MarkdownMessage content={aiInsights} />
                                 </div>
                             )}
                         </CardContent>
