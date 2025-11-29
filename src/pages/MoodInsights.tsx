@@ -53,7 +53,8 @@ const MoodInsights = () => {
                 setMoodLogs(data);
                 calculateAnalytics(data);
                 if (data.length > 5) {
-                    generateInsights(data);
+                    const latestLog = data[data.length - 1];
+                    checkAndFetchInsights(data, latestLog.created_at);
                 }
             }
         } catch (error) {
@@ -63,7 +64,34 @@ const MoodInsights = () => {
         }
     };
 
-    const generateInsights = async (logs: any[]) => {
+    const checkAndFetchInsights = async (logs: any[], latestLogTimestamp: string) => {
+        const today = format(new Date(), 'yyyy-MM-dd');
+        try {
+            const { data: cachedInsight } = await supabase
+                .from('daily_insights')
+                .select('*')
+                .eq('user_id', user?.id)
+                .eq('date', today)
+                .single();
+
+            if (cachedInsight) {
+                const cachedTime = cachedInsight.last_mood_log_at ? new Date(cachedInsight.last_mood_log_at).getTime() : 0;
+                const latestLogTime = new Date(latestLogTimestamp).getTime();
+
+                if (cachedTime >= latestLogTime) {
+                    console.log("Using cached insights");
+                    setAiInsights(cachedInsight.content);
+                    return;
+                }
+            }
+        } catch (error) {
+            console.error("Error checking cached insights:", error);
+        }
+
+        generateInsights(logs, latestLogTimestamp);
+    };
+
+    const generateInsights = async (logs: any[], latestLogTimestamp?: string) => {
         setGeneratingInsights(true);
         try {
             // Prepare data summary for AI
@@ -79,6 +107,17 @@ const MoodInsights = () => {
 
             const response = await generateAIResponse(prompt);
             setAiInsights(response);
+
+            // Cache the result
+            if (user) {
+                const today = format(new Date(), 'yyyy-MM-dd');
+                await supabase.from('daily_insights').upsert({
+                    user_id: user.id,
+                    date: today,
+                    content: response,
+                    last_mood_log_at: latestLogTimestamp
+                }, { onConflict: 'user_id, date' });
+            }
         } catch (error) {
             console.error("Error generating insights:", error);
         } finally {
