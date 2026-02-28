@@ -105,46 +105,7 @@ const About = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <Card className="border-secondary/20 glass-card">
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2">
-                                <Users className="w-6 h-6 text-secondary" />
-                                Created By
-                            </CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-6">
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20">
-                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                                        D
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-lg">Dhruv Khitha</h3>
-                                        <p className="text-sm text-muted-foreground">Student Developer</p>
-                                    </div>
-                                </div>
 
-                                <div className="flex items-center gap-4 p-4 rounded-xl bg-gradient-to-br from-secondary/5 to-secondary/10 border border-secondary/20">
-                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white text-2xl font-bold shadow-lg">
-                                        T
-                                    </div>
-                                    <div>
-                                        <h3 className="font-semibold text-lg">Tanmay Khitha</h3>
-                                        <p className="text-sm text-muted-foreground">Student Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3 p-4 rounded-xl bg-muted/50">
-                                <School className="w-6 h-6 text-primary shrink-0 mt-1" />
-                                <div>
-                                    <p className="font-medium">Class 10th Theta</p>
-                                    <p className="text-sm text-muted-foreground">RPS International School</p>
-                                    <p className="text-sm text-muted-foreground">High School in Gurgaon, Haryana</p>
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
                 </motion.div>
 
                 {/* Features */}
